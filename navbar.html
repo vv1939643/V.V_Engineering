@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V.V ENGINEERING</title>
+    <link rel="icon" href="vvlogo.png" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-custom {
+            background-color: gray;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .navbar-custom .nav-link {
+            color: blue; !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .navbar-custom .nav-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            background: linear-gradient( #F4521C , white, white, green);
+            border-radius: 5px;
+            border: 2px solid white;
+        }
+        .navbar-custom .navbar-brand {
+            color: white !important;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-custom .navbar-logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .typing-effect-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            margin-top: 20px;
+        }
+        .typing-effect {
+            font-size: 36px;
+            font-weight: bold;
+            color: #3498db;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+            animation: typing 5s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
+            animation-delay: 5s;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 14ch; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: red; }
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin-left: 20%;
+            width: 52%;
+            height: 80%;
+            margin-bottom: 20px; /* Added margin for spacing */
+        }
+        .image-container img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+        .border-top, .border-bottom, .border-left, .border-right {
+            position: absolute;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+        .border-top {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: red;
+        }
+        .border-bottom {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: blue;
+        }
+        .border-left {
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: green;
+        }
+        .border-right {
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background-color: yellow;
+        }
+        .image-container:hover .border-top {
+            animation: moveTop 1s forwards;
+        }
+        .image-container:hover .border-bottom {
+            animation: moveBottom 1s forwards;
+        }
+        .image-container:hover .border-left {
+            animation: moveLeft 1s forwards;
+        }
+        .image-container:hover .border-right {
+            animation: moveRight 1s forwards;
+        }
+        @keyframes moveTop {
+            0% { top: 0; left: 0; width: 100%; background-color: red; }
+            100% { top: 100%; left: 0; width: 100%; background-color: yellow; }
+        }
+        @keyframes moveBottom {
+            0% { bottom: 0; left: 0; width: 100%; background-color: blue; }
+            100% { bottom: 100%; left: 0; width: 100%; background-color: green; }
+        }
+        @keyframes moveLeft {
+            0% { top: 0; left: 0; height: 100%; background-color: green; }
+            100% { top: 0; left: 100%; height: 100%; background-color: red; }
+        }
+        @keyframes moveRight {
+            0% { top: 0; right: 0; height: 100%; background-color: yellow; }
+            100% { top: 0; right: 100%; height: 100%; background-color: blue; }
+        }
+        .owner-text-container {
+            position: absolute;
+            bottom: -30px; /* Adjust position as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+        }
+        .owner-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(45deg, #ff6b6b, #f06595);
+            border-radius: 5px;
+            padding: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .owner-text:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #f06595, #ff6b6b);
+        }
+        body {
+    padding-top: 56px;
+    background: linear-gradient(to right, #fbc2eb, #fbd3e9, #fcd3a8, #d4fc79);
+    background-size: cover;
+    height: 100vh;
+}
+
+
+        /* Language Toggle Styles */
+        .lang {
+            display: none;
+        }
+        .lang-en {
+            display: block;
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 767.98px) {
+            .image-container {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .col-md-6.order-md-2 {
+                order: 1;
+            }
+
+            .col-md-6.order-md-1 {
+                order: 2;
+            }
+        }
+        .a1 {
+            text-align: center;
+            padding-left: 100px ;
+            padding-right: 100px;
+            padding-bottom: 50px;
+            padding-top: 50px;
+            background-color: #f8f9fa;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .a1 h2 {
+            font-size: 48px;
+            color: #3498db;
+            font-weight: bold;
+        }
+        .custom-line-height {
+    line-height: 1.5;}
+    p{
+        font-size: 150%;
+    }
+/* Base styles for larger screens */
+#contact {
+    padding: 40px 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    width: 48%;
+    margin-bottom: 20px;
+}
+
+.info-item h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.info-item p {
+    margin: 5px 0;
+}
+
+.info-item a {
+    color: #333;
+    text-decoration: none;
+}
+
+.info-item a:hover {
+    text-decoration: underline;
+}
+
+.business-hours {
+    text-align: center;
+}
+
+.business-hours h3 {
+    margin-bottom: 10px;
+}
+
+.business-hours p {
+    margin: 5px 0;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-item {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-item h3 {
+        font-size: 1.1em;
+    }
+
+    .info-item p {
+        font-size: 0.9em;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Modal for full-size image -->
+<div id="imageModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color: rgba(0,0,0,0.8); align-items:center; justify-content:center;">
+    <span onclick="closeModal()" style="position:absolute; top:20px; right:35px; color:white; font-size:40px; cursor:pointer;">&times;</span>
+    <img id="modalImage" src="" style="max-width:100%; max-height:100%;">
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#">
+        <img src="vvlogo.png" alt="" class="navbar-logo">
+        <span style="color:#F79431;">V.V</span> Eng<span style="color:green;" >ineering</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active ">
+                <a class="nav-link" href="#homeSection">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#aboutSection">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#ServicesSection">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#productSection">Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#ContactSection">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Any Information</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Language
+                </a>
+                <div class="dropdown-menu" aria-labelledby="languageDropdown">
+                    <a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a>
+                    <a class="dropdown-item" href="#" onclick="setLanguage('hi')">हिन्दी</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div id="homeSection">
+    <div class="typing-effect-container mt-5">
+        <h1 class="typing-effect" >
+            <a href="#" title="Vishal Vaibhav Engineering" style="text-decoration: none; "> <span style="color:#F79431;">V.V</span> <span style="color:blue;">Eng</span><span style="color:green;" >ineering</span></a>
+        </h1>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 order-md-2 order-1">
+                <div class="image-container" >
+                    <img src="owner.jpeg" alt="Owner Image">
+                    <div class="border-top"></div>
+                    <div class="border-bottom"></div>
+                    <div class="border-left"></div>
+                    <div class="border-right"></div>
+                    <div class="owner-text-container">
+                        <p class="owner-text">Owner of V.V Engineering</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 order-md-1 order-2">
+                <h4 style="padding-left: 10%; padding-top: 5%;">
+                    <span class="lang lang-en">
+                       <span style="color:#E95824;"> <b>Name :</b><br> Satyajeet Kumar <br></span>
+                        <span style="color:blue;" ><b>Skills & Expertise :</b> <br> 1. Business management <span style="color:blue;"> <br> 2. Strategic Planning <br> 
+                        3. Financial management <br></span> 4. Industry-specific skills <br><b>Experience :</b> <br>25 Years <br></span>
+                        <span style="color:green;" ><b> Company Establishment :</b> <br> 17 Sep 2015 <br> <b>Post :</b><br> Owner Of V.V Engineering </span>
+                    </span>
+                    <span class="lang lang-hi">
+                        <b>नाम :</b><br> सत्यजीत कुमार <br> 
+                        <b>कौशल और विशेषज्ञता :</b> <br> 1. व्यवसाय प्रबंधन <br> 2. रणनीतिक योजना <br> 
+                        3. वित्तीय प्रबंधन <br> 4. उद्योग-विशिष्ट कौशल <br><b>अनुभव :</b> <br>25 वर्ष <br>
+                        <b> कंपनी स्थापना :</b> <br> 17 सितंबर 2015 <br> <b>पद :</b><br> वी.वी. इंजीनियरिंग के मालिक 
+                    </span>
+                </h4>
+                
+            </div>
+        </div>
+<div id="aboutSection">
+    <center><h1 class="pt-2 pb-2 mt-5 " style="background: linear-gradient(#E95824, white,white,white, green);" ><span style="color: blue;" >About</span></h1></center>
+    <div class="row pt-5 ">
+        <div class="col-md-4 order-2 order-md-1  ">
+            <h4 style="padding-left: 10%; padding-top: 5%;">
+                <span class="lang lang-en">
+                   <span style="color:#E95824;" > <b>Company Name :</b><br> Vishal Vaibhav Engineering<br><b> Company establishment  : </b><br> 17-09-2015 <br></span> 
+                   <span style="color:blue;"><b>GST Number :</b><br> <span style="color:blue;"> 1234567890098 </span><br> 
+                   <b>Registion Number :</b><br> 12345678900987654321 <br></span> 
+                   <span style="color: green;">
+                    <b>Owner of the V.V Engineering :</b> <br> Satyajeet Kumar <br> <b>Contact Number :</b><br> 7352470256, 7903961619 <br><br></span> 
+                </span>
+                <span class="lang lang-hi" >
+                    <span style="color:#E95824;;" > <b>कंपनी का नाम :</b><br> विशाल वैभव इंजीनियरिंग<br><b> कंपनी की स्थापना  : </b><br> 17-09-2015 <br></span> 
+                   <span style="color:blue;"><b>GST नंबर :</b><br> <span style="color:blue;"> 1234567890098 </span><br> 
+                   <b>रजिस्ट्रेशन नंबर :</b><br> 12345678900987654321 <br></span> 
+                   <span style="color: green;">
+                    <b>वी.वी. इंजीनियरिंग कंपनी के मालिक :</b> <br> सत्यजीत कुमार <br> <b>कंपनी से संपर्क करने का नंबर  :</b><br> 7352470256, 7903961619 <br><br></span> 
+                </span>
+            </h4>
+        </div>
+        <div class="col-md-4 order-3 order-md-2 ">
+            <span class="lang lang-en">
+                <h4 class="custom-line-height pt-3 "><span style="color:#E95824;;" > <b>What type of products does your company manufacture :</b> <br> 1. All types of jacks</span> 
+                <span style="color:blue;"><br> 2. ball mills <br> <span style="color:blue;">3. centering plates </span> <br> 4. seeders <br> 5. rotavators </span> 
+                <span style="color:green;"><br> 6. tractor trolleys <br>7. Roller machines <br> 8. All products related to fabrication  </span>
+                </h4>
+            </span>
+            <span class="lang lang-hi">
+                <h4 class="custom-line-height pt-3 "><span style="color:#E95824;;" > <b>आपकी कंपनी किस प्रकार के उत्पाद बनाती है:</b> <br> 1. सभी प्रकार के हाइड्रोलिक जैक</span> 
+                <span style="color:blue;"><br> 2. बॉल मिल <br> <span style="color:blue;">3. सेंट्रिंग प्लेट्स </span> <br> 4. सीडर्स <br> 5. रोटावेटर </span> 
+                <span style="color:green;"><br> 6. ट्रैक्टर ट्रॉलियाँ <br>7. रोलर मशीनें <br> 8. निर्माण से संबंधित सभी उत्पाद  </span>
+                </h4>
+        </div>
+        <div class="col-md-4 order-1 order-md-3">
+            <div class="image-container">
+                <img src="poster.jfif" alt="V.V Engineering Poster" class="img-fluid">
+                <div class="border-top"></div>
+                <div class="border-bottom"></div>
+                <div class="border-left"></div>
+                <div class="border-right"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ServicesSection">
+    <center><h1 class="pt-2 pb-2 mt-5 " style="background: linear-gradient(#E95824, white,white,white, green);" ><span style="color: blue;" >Services</span></h1></center>
+            <h4 style="padding-left: 2%; padding-top: 5%;">
+                <span class="lang lang-en">
+                   <span style="color:#E95824;">V.V Engineering proudly delivers high-quality products across India. Our primary objective is to provide the best products to our customers at reasonable prices while prioritizing safety at every stage of the manufacturing process. It is this unwavering commitment to quality and safety that has positioned V.V Engineering among the leading companies in India.<br><br>
+
+Our company's main goal is to ensure that all types of manufacturing take place within India so that the country does not have to rely on other nations for any kind of machinery. We aim to secure India’s top position in the global manufacturing sector and make the nation self-reliant.<br><br></span>
+
+<span style="color:blue;">The hallmark of our services is customer satisfaction and transparency. Upon receiving an order, we require a 75% advance payment along with GST, while the remaining 25% is collected after the customer has inspected and approved the products at their designated facility. This ensures that the products not only meet their expectations but also function perfectly. This process provides our customers with complete satisfaction and takes their convenience into account.<br><br></span>
+
+<span style="color:green;"><br><br><br><br>
+
+Contact Us:
+
+Mobile Numbers: 7352470256, 7903961619</span>
+
+        </div>
+        <h4 style="padding-left: 2%; padding-top: 5%;">
+                <span class="lang lang-hi">
+                   <span style="color:#E95824;">V.V Engineering पूरे भारत में अपने उच्च गुणवत्ता वाले उत्पादों को गर्वपूर्वक वितरित करती है। हमारा मुख्य उद्देश्य ग्राहकों को उचित दाम पर सर्वश्रेष्ठ उत्पाद देना और निर्माण के प्रत्येक चरण में सुरक्षा को प्राथमिकता देना है। यही गुणवत्ता और सुरक्षा के प्रति हमारी दृढ़ प्रतिबद्धता है जिसने V.V Engineering को भारत की अग्रणी कंपनियों में शामिल किया है।<br><br>
+
+हमारा कंपनी का मुख्य उद्देश्य यह है कि सभी प्रकार की मैन्युफैक्चरिंग भारत में ही हो, ताकि भारत को किसी भी प्रकार की मशीन के लिए दूसरे देशों पर निर्भर न रहना पड़े। हम यह सुनिश्चित करना चाहते हैं कि मैन्युफैक्चरिंग के क्षेत्र में हमारा देश विश्व में शीर्ष स्थान पर रहे और आत्मनिर्भर बने। <br><br> </span>
+
+<span style="color:blue;">हमारी सेवाओं की विशेषता है—ग्राहक संतुष्टि और पारदर्शिता। ऑर्डर मिलने पर हम 75% अग्रिम भुगतान और GST की मांग करते हैं, जबकि शेष 25% भुगतान तब लिया जाता है जब ग्राहक ने अपने सुविधा केंद्र पर उत्पादों का निरीक्षण कर स्वीकृति दी हो। इससे यह सुनिश्चित होता है कि उत्पाद न केवल उनकी उम्मीदों पर खरे उतरते हैं, बल्कि पूरी तरह से सही ढंग से काम भी कर रहे हैं। यह प्रक्रिया हमारे ग्राहकों को पूर्ण संतुष्टि का अनुभव देती है और उनकी सुविधा का ध्यान रखती है।।<br><br></span>
+
+<span style="color:green;">V.V Engineering का उद्देश्य है—प्रत्येक ग्राहक को उनकी जरूरतों और अपेक्षाओं के अनुसार बेहतरीन उत्पाद और सेवाएं प्रदान करना। हमारी पारदर्शिता, गुणवत्ता, और ग्राहक संतुष्टि के प्रति प्रतिबद्धता ने हमें अपने ग्राहकों के बीच अटूट विश्वास और सम्मान अर्जित करने में मदद की है। हम आपके सभी निर्माण आवश्यकताओं के लिए एक भरोसेमंद और स्थायी साझेदार बनने के लिए सदैव तत्पर हैं।<br><br><br><br>
+
+Contact Us:  7352470256, 7903961619</span>
+
+
+    <div>   
+    </div>
+</div>
+<hr>
+<div id="productSection">
+    <center>
+        <h1 class="pt-2 pb-2 mt-5" style="background: linear-gradient(#E95824, white, white, white, green);">
+            <span style="color: blue;">Product</span>
+        </h1>
+        <span class="lang lang-en pt-4 pb-4 "> <h4> V.V Engineering's manufactured product images </h4></span>
+       <span class="lang lang-hi"> <h4><span style="color:#E95824;" >V.V Engineering</span><span style="color:blue;" > द्वारा निर्मित</span><span style="color:green;" >उत्पादों की छवियाँ</span> </h4></span>
+    </center>
+    <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; padding: 10px;">
+        <div style="text-align: center;">
+        <img src="trolyvv.png" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+        <p>Tractor Trolley Jacks </p>
+    </div>
+    <!-- <div style="text-align: center;">
+        <img src="Ball_1.jpg" alt="Product 3" style="width: 100%; height: auto; border-radius: 8px;">
+        <p>Ball Mill</p>
+    </div> -->
+    <div style="text-align: center;">
+        <img src="moter.png" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+        <p>Pan Mixer Machine</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="rolar.jfif" alt="Product 3" style="width: 100%; height: auto; border-radius: 8px;">
+        <p>Sheet Roller Machine</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="tanker.png" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+        <p>Tanker</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="seeder.png" alt="Product 3" style="width: 100%; height: auto; border-radius: 8px;">
+        <p>Super Seeder</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="centrring plate.jfif" alt="Product 3" style="width: 100%; height: auto; border-radius: 8px;">
+        <p>Centering Plate</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="Car Hydraulic trolley Jack.jpg" alt="Product 1" title="Jack" style="width: 100%; height: auto; border-radius: 8px;">
+        <p>Car Hydraulic Jack</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="Vehicle Hydraulick Jack.jpg" alt="Product 2" title="Jack" style="width: 100%; height: auto; border-radius: 8px;">
+        <p>Vehicle Hydraulick Jack</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="hydraulic tractor jack.jpg" alt="Product 3" title="Jack" style="width: 100%; height: auto; border-radius: 8px;"><p>Hydraulic Tractor Jack</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="Locking collar hydraulic jacks.jfif" title="Jack" alt="Product 1" style="width: 100%; height: auto; border-radius: 8px;"><p>Locking Collar Hydraulic Jacks</p>
+    </div>
+    <div style="text-align: center;">
+        <img src=" hydraulic jack who.jpg" title="Jack" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;"><p>Tractor Trolley</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="bottle type jack.jfif" title="Jack" alt="Product 3" style="width: 100%; height: auto; border-radius: 8px;"><p>Bottle type Jack</p>
+    </div>
+    <!-- <div style="text-align: center;">
+        <img src="Ball mill.jfif" alt="Product 1" style="width: 100%; height: auto; border-radius: 8px;"><p>Ball Mills</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="ball mil2.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;"><p>Ball Mills</p>
+    </div> -->
+    <div style="text-align: center;">
+        <img src="mobile toilet.jpg" alt="Product 3" style="width: 100%; height: auto; border-radius: 8px;"><p>Mobile Toilet</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="sed1.jfif" alt="Product 1" style="width: 100%; height: auto; border-radius: 8px;"><p>Jsw Tin Roofing Shed Fabrication</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="manual sheet rolling machine.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;"><p>Sheet Roller Machine</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="rotavator.jfif" alt="Product 3" style="width: 100%; height: auto; border-radius: 8px;"><p>rotavator</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="harrow.jfif" alt="Product 3" style="width: 100%; height: auto; border-radius: 8px;"><p>harrow</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="Tractor Disc Harrow Cultivator Machine Disk Harrow.jfif" alt="Product 3" style="width: 100%; height: auto; border-radius: 8px;"><p>Tractor Disc Harrow Cultivator</p>
+    </div>
+    
+</div>
+
+<center><span class="lang lang-en pt-4 pb-4 "> <h4> Photo of working time </h4></span>
+       <span class="lang lang-hi"> <h4><span style="color:green;" >काम करते समय का फोटो</span></center> 
+
+        <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; padding: 10px;">
+                <img src="work1.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+                <img src="work2.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+                <img src="work5.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+                <img src="work6.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+                <img src="work9.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+                <img src="work10.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+                <img src="work11.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+                <img src="work12.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+                <img src="work13.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+                <img src="work15.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+                <img src="work16.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+                <img src="work17.jfif" alt="Product 2" style="width: 100%; height: auto; border-radius: 8px;">
+            </div>
+            <hr>
+            <section id="contact">
+        <div class="container-fluid">
+            <h2 style="background: linear-gradient(#E95824, white, white, white, green);" > Contact Us</h2>
+            <p>We are always here to assist you with any questions or inquiries. Reach out to us via the details below!</p>
+            <div class="contact-info">
+                <div class="info-item">
+                    <h3>Company Name</h3>
+                    <p><strong>V.V Engineering</strong></p>
+                </div>
+                <div class="info-item">
+                    <h3>Contact Numbers</h3>
+                    <p>📞 <a href="tel:+917352470256">7352470256</a> (Phone & WhatsApp)</p>
+                    <p>📞 <a href="tel:+917903961619">7903961619</a> (Phone)</p>
+                    <p>📞 <a href="tel:+917368060721">7368060721</a> (WhatsApp)</p>
+                </div>
+                <div class="info-item">
+                    <h3>Email</h3>
+                    <p>✉️ <a href="mailto:vv1939643@gmail.com">vv1939643@gmail.com</a></p>
+                </div>
+                <div class="info-item">
+                    <h3>Location</h3>
+                    <p>📍 Karihon, Mahua, Vaishal, Bihar 800001</p>
+                    <p>Pin Code: 800001</p>
+                </div>
+            </div>
+            <div class="business-hours">
+                <h3>Business Hours</h3>
+                <p>🕒 Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                <p>📅 Closed on Sundays</p>
+            </div>
+        </div>
+    </section>
+        
+
+</div></div></div></div></div>
+
+<script>
+    function setLanguage(lang) {
+        var elements = document.getElementsByClassName('lang');
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.display = 'none';
+        }
+        var selectedLangElements = document.getElementsByClassName('lang-' + lang);
+        for (var i = 0; i < selectedLangElements.length; i++) {
+            selectedLangElements[i].style.display = 'block';
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Function to open modal with clicked image
+    function showImage(src) {
+        document.getElementById("modalImage").src = src;
+        document.getElementById("imageModal").style.display = "flex";
+    }
+
+    // Close the modal
+    function closeModal() {
+        document.getElementById("imageModal").style.display = "none";
+    }
+
+    // Add click event to all images in product section
+    document.addEventListener("DOMContentLoaded", function () {
+        var images = document.querySelectorAll(".image-grid img, .product-section img, div img");
+        images.forEach(function (img) {
+            img.style.cursor = "pointer";
+            img.addEventListener("click", function () {
+                showImage(img.src);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
